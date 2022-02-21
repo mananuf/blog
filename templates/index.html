@@ -1,28 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
-    {% if title %}
-    <title>My Blog - {{title}}</title>
-    {% else %}
-    <title>My Blog</title>
-    {% endif %}
-</head>
-<body>
-    <div class="header">
-        <nav class="nav">
-            <ul class="nav-left">
-                <li><a href="{{url_for('home')}}">Home</a></li>
-                <li><a href="{{url_for('about')}}">About</a></li>
+{% extends 'layout.html'%}
+{% block content %}
+    <div class="container">
+        <div class="post">
+        {% for posted_item in posts %}
+        
+            <div>
+                <h1>{{posted_item.title}}</h1>
+                <h4>By {{posted_item.author}}</h4>
+                <p>
+                    {{posted_item.content}}
+                </p>
+                <p>
+                    <small> Posted on: {{posted_item.date}} </small>
+                </p>
+            </div>
+        
+        {% endfor %}
+        </div>
+
+        <!-- side-content -->
+        <div class="side-content">
+            <h2>Side Bar</h2>
+            <p><small>Anything can be pasted here Lorem ipsum dolor sit.</small></p>
+            <ul>
+                <li>Latest Post</li>
+                <li>Announcements</li>
+                <li>Adverts</li>
+                <li>Magazine</li>
             </ul>
-            <ul class="nav-right">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign Up</a></li>
-            </ul>
-        </nav>
+        </div>
+        <!-- side-content end -->
     </div>
-</body>
-</html>
+{% endblock content %}
+        <!-- this area will not be included in the template display -->
