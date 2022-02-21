@@ -37,5 +37,16 @@ def about():
     return render_template("about.html", title = 'About')
 
 
+@app.route('/registration')
+def registration():
+    form = RegistrationForm()
+    return render_template('register.html', form=form )
+
+
+@app.route('/login')
+def registration():
+    form = LoginForm()
+    return render_template('login.html', form=form )
+
 if __name__ == "__main__":
     app.run(debug=True)
