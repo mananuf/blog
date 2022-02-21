@@ -2,6 +2,8 @@ from flask import Flask,render_template,url_for
 
 app = Flask(__name__)
 
+app.config['SECRET_KEYS'] = '5468e77745e8b9a5b55adbf16e9bdb9'
+
 
 posts = [ #an array/list of dictionaries, containing blog post
     {
