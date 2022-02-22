@@ -50,6 +50,10 @@
 .login-form p a{
     text-decoration: none;
 }
+#remember{
+    display: flex;
+}
+
 .input:invalid::after{
     border: 1px solid red;
 }

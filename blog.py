@@ -51,7 +51,7 @@ def registration():
     form = RegistrationForm()
 
     if form.validate_on_submit(): #if the form validates correctly,
-        flash(f'Account for {form.username} has been created!', 'success') #print this success flash
+        flash(f'Account for {form.username.data} has been created!', 'success') #print this success flash
 
         return redirect(url_for('home')) 
 
@@ -62,7 +62,7 @@ def registration():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash(f'Logged in successfully. Welcome onboard')
+        flash(f'Logged in successfully. Welcome onboard {form.email.data}', 'success')
 
         return redirect(url_for('home'))
 
