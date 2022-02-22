@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.registration-form h1{
+    text-align: center;
+    background-color: blue;
+    width: 100%;
+    color: white;
+    padding: 20px;
+}
+.registration-form{
+    width: 50%;
+    margin: 50px auto;
+    border: 1px solid blue;
+}
+.registration-form .label{
+    display: block;
+    margin: 5px 0;
+}
+.registration-form .form-group{
+    padding: 15px;
+}
+.registration-form .form-group .input{
+    width:100%;
+    padding: 10px;
+}
+.registration-form .submit{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.registration-form .submit .btn-submit{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    width: 50%;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    margin: 10px 0;
+}
+.registration-form p {
+    text-align: center;
+    padding: 10px;
+}
+.registration-form p a{
+    text-decoration: none;
+}
