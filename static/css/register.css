@@ -50,3 +50,10 @@
 .registration-form p a{
     text-decoration: none;
 }
+.input:invalid::after{
+    border: 1px solid red;
+}
+.invalid-feedback{
+    font-size: smaller;
+    color: red;
+}

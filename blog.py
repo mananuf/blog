@@ -50,17 +50,22 @@ def about():
 def registration():
     form = RegistrationForm()
 
-    if form.validate_on_submit():
-        flash(f'Account for {form.username} has been created!', 'success')
+    if form.validate_on_submit(): #if the form validates correctly,
+        flash(f'Account for {form.username} has been created!', 'success') #print this success flash
 
-        return redirect(url_for('home'))
+        return redirect(url_for('home')) 
 
     return render_template('register.html',title ='Register', form=form )
 
 
-@app.route('/login')
+@app.route('/login', methods=['Get','POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        flash(f'Logged in successfully. Welcome onboard')
+
+        return redirect(url_for('home'))
+
     return render_template('login.html', title='Login', form=form)
 
 
