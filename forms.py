@@ -1,7 +1,7 @@
-import email
+from distutils.command.config import config
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, email_validator
 
 
 class RegistrationForm(FlaskForm):

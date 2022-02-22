@@ -1,28 +1,33 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="form">
-        {{form.hidden_tag()}}
-        <h1>CREATE ACCOUNT</h1>
-        <form method="POST">
-            <div class="form-group">
-                <label for="username">username</label>
-                <input type="text" name="fusername" id="username">
-            </div>
-            <div class="form-group">
-                <label for="email">email</label>
-                <input type="temail" name="email" id="email">
-            </div>
-            <div class="form-group">
-                <label for="password">password</label>
-                <input type="password" name="password" id="password">
-            </div>
-            <div class="form-group">
-                <label for="confirm_password">confirm password</label>
-                <input type="password" name="confirm_password" id="confirm_password">
-            </div>
-            <div class="submit">
-                <input type="submit" value="CREATE" id="btn-submit">
-            </div>
-        </form>
+    <div class="container">
+        <div class="registration-form">
+            <h1>CREATE ACCOUNT</h1>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.username.label(class="label") }}
+                    {{ form.username(class="input") }}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="label") }}
+                    {{ form.email(class="input") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="label") }}
+                    {{ form.password(class="input") }}
+                </div>
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="label") }}
+                    {{ form.confirm_password(class="input") }}
+                </div>
+                <div class="submit">
+                    {{ form.submit(class="btn-sumbit") }}
+                </div>
+            </form>
+            <p>
+                <small>Already have an account?</small> <a href="{{url_for('login')}}">Login Here!</a>
+            </p>
+        </div>
     </div>
 {% endblock content %}

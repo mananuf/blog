@@ -91,3 +91,11 @@
     padding: 5px;
     margin-bottom: 1px;
 }
+
+.success{
+    background-color: rgb(71, 150, 71);
+    color: rgb(222, 228, 222);
+    padding: 10px;
+    text-align: center;
+    margin: 3px;
+}
