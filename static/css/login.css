@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.login-form h1{
+    text-align: center;
+    background-color: green;
+    width: 100%;
+    color: white;
+    padding: 20px;
+}
+.login-form{
+    width: 50%;
+    margin: 50px auto;
+    border: 1px solid green;
+}
+.login-form .label{
+    display: block;
+    margin: 5px 0;
+}
+.login-form .form-group{
+    padding: 15px;
+}
+.login-form .form-group .input{
+    width:100%;
+    padding: 10px;
+}
+.login-form .submit{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.login-form .submit .btn-submit{
+    padding: 10px;
+    background-color: green;
+    color: white;
+    width: 50%;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    margin: 10px 0;
+}
+.login-form p {
+    text-align: center;
+    padding: 10px;
+}
+.login-form p a{
+    text-decoration: none;
+}
+.input:invalid::after{
+    border: 1px solid red;
+}
+.invalid-feedback{
+    font-size: smaller;
+    color: red;
+}
