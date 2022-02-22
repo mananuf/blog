@@ -1,9 +1,18 @@
-from flask import Flask,render_template,url_for
+from wsgiref import validate
+from flask import Flask,render_template,url_for,redirect, flash
 from forms import RegistrationForm, LoginForm
+import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEYS'] = '5468e77745e8b9a5b55adbf16e9bdb9'
+
+
+
+# SECRET_KEY = os.urandom(32)
+# app.config['SECRET_KEY'] = SECRET_KEY
+
+
+app.config['SECRET_KEY'] = '5468e77745e8b9a5b55adbf16e9bdb9'
 
 
 posts = [ #an array/list of dictionaries, containing blog post
@@ -37,16 +46,23 @@ def about():
     return render_template("about.html", title = 'About')
 
 
-@app.route('/registration')
+@app.route('/registration', methods=['GET', 'POST'])
 def registration():
     form = RegistrationForm()
-    return render_template('register.html', form=form )
+
+    if form.validate_on_submit():
+        flash(f'Account for {form.username} has been created!', 'success')
+
+        return redirect(url_for('home'))
+
+    return render_template('register.html',title ='Register', form=form )
 
 
 @app.route('/login')
-def registration():
+def login():
     form = LoginForm()
-    return render_template('login.html', form=form )
+    return render_template('login.html', title='Login', form=form)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
