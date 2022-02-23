@@ -1,11 +1,12 @@
 from wsgiref import validate
 from flask import Flask,render_template,url_for,redirect, flash
+from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
-import os
+# import os
 
 app = Flask(__name__)
 
-
+db = SQLAlchemy(app)
 
 
 # SECRET_KEY = os.urandom(32)
@@ -13,6 +14,7 @@ app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = '5468e77745e8b9a5b55adbf16e9bdb9'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #setting relative path for sqlite DB
 
 
 posts = [ #an array/list of dictionaries, containing blog post
