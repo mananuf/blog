@@ -1,7 +1,3 @@
-
-
-
-
 from blog import app
 
 
