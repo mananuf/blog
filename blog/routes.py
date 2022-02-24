@@ -1,6 +1,6 @@
 from flask import render_template,url_for,redirect, flash
 from blog.forms import RegistrationForm, LoginForm
-from blog import app
+from blog import app, bcrypt, db
 from blog.models import User, Post
 
 posts = [ #an array/list of dictionaries, containing blog post
@@ -39,6 +39,13 @@ def registration():
     form = RegistrationForm()
 
     if form.validate_on_submit(): #if the form validates correctly,
+
+        # aHasshing and adding to DB 
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8') #hash function
+        user = User(form.username.data, form.email.data, hashed_password) # instantiating user DB model
+        db.add(user) #stage this instance
+        db.commit(user) #commit to database
+
         flash(f'Account for {form.username.data} has been created!', 'success') #print this success flash
 
         return redirect(url_for('home')) 
