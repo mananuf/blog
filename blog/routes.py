@@ -1,25 +1,7 @@
-from flask import Flask,render_template,url_for,redirect, flash
-from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm
-from models import User, Post
-# import os
-
-app = Flask(__name__)
-
-
-
-
-# SECRET_KEY = os.urandom(32)
-# app.config['SECRET_KEY'] = SECRET_KEY
-
-
-app.config['SECRET_KEY'] = '5468e77745e8b9a5b55adbf16e9bdb9'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #setting relative path for sqlite DB
-
-
-db = SQLAlchemy(app) #creating an instance for DB
-
-
+from flask import render_template,url_for,redirect, flash
+from blog.forms import RegistrationForm, LoginForm
+from blog import app
+from blog.models import User, Post
 
 posts = [ #an array/list of dictionaries, containing blog post
     {
@@ -73,7 +55,3 @@ def login():
         return redirect(url_for('home'))
 
     return render_template('login.html', title='Login', form=form)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
