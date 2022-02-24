@@ -1,5 +1,7 @@
+import bcrypt
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 
 # import os
@@ -18,5 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #setting relative p
 
 
 db = SQLAlchemy(app) #creating an instance for DB
+bcrypt = Bcrypt() # instantiating Bcrypt
 
 from blog import routes #imports route channel
