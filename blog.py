@@ -1,7 +1,7 @@
 from flask import Flask,render_template,url_for,redirect, flash
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 from forms import RegistrationForm, LoginForm
+from models import User, Post
 # import os
 
 app = Flask(__name__)
@@ -19,27 +19,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #setting relative p
 
 db = SQLAlchemy(app) #creating an instance for DB
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    username = db.Column(db.String(20), unique=True, nullable=False) 
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), unique=False, nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-    posts = db.relationship('Post', backref='author', lazy=True)
-
-    def __repr__(self):
-        return f'User({self.username}, {self.email}, {self.image_file})'
-
-
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    title = db.Column(db.String(100), unique=True, nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    content = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-    def __repr__(self):
-        return f'Post({self.title}, {self.date_posted})'
 
 
 posts = [ #an array/list of dictionaries, containing blog post
