@@ -2,6 +2,7 @@ import bcrypt
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 
 # import os
@@ -21,5 +22,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #setting relative p
 
 db = SQLAlchemy(app) #creating an instance for DB
 bcrypt = Bcrypt() # instantiating Bcrypt
+login = LoginManager() #instantiating LoginManager
 
 from blog import routes #imports route channel

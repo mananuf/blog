@@ -42,13 +42,13 @@ def registration():
 
         # aHasshing and adding to DB 
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8') #hash function
-        user = User(form.username.data, form.email.data, hashed_password) # instantiating user DB model
-        db.add(user) #stage this instance
-        db.commit(user) #commit to database
+        user = User(username = form.username.data, email=form.email.data, password=hashed_password) # instantiating user DB model
+        db.session.add(user) #add to database
+        db.session.commit() #save to database
 
-        flash(f'Account for {form.username.data} has been created!', 'success') #print this success flash
+        flash(f'Account for {form.username.data} has been created! You can now login', 'success') #print this success flash
 
-        return redirect(url_for('home')) 
+        return redirect(url_for('login')) 
 
     return render_template('register.html',title ='Register', form=form )
 
