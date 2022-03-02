@@ -80,3 +80,10 @@ def login():
             flash(f'Login unsuccessful. check {form.email.data} and password.', 'danger') #flash this
 
     return render_template('login.html', title='Login', form=form)
+
+
+# log out route
+@app.route('/logout' )
+def logout():
+    logout_user() #logs the user out
+    return redirect(url_for(home)) #returns to home for [login|register]
