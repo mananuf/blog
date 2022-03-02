@@ -1,6 +1,14 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<h1>Welcome on board {{current_user.username}}!</h1>
+<div class="container">
+    <div class="profile-container">
+        <div class="profile-photo"></div>
+        <div class="profile-details">
+            <h3> {{current_user.username}} </h3>  <!--displays username of current user-->
+            <p> {{current_user.email}} </p> <!--displays email of curent user-->
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
