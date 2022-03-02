@@ -1,3 +1,4 @@
+from turtle import title
 from flask import render_template,url_for,redirect, flash
 from blog.forms import RegistrationForm, LoginForm
 from blog import app, bcrypt, db
@@ -87,3 +88,8 @@ def login():
 def logout():
     logout_user() #logs the user out
     return redirect(url_for('home')) #returns to home for [login|register]
+
+# account route
+@app.route('/account')
+def account():
+    return render_template('account.html', title='Account')
