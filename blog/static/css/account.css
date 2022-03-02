@@ -7,6 +7,7 @@
     background: rgba(228, 228, 235, 0.685);
     border-radius: 5px;
     width: 80%;
+    flex-wrap: wrap;
 }
 /* **************** photo container ********************* */
 .profile-photo img{
@@ -32,3 +33,26 @@
     margin: 5px 0;
 }
 
+.update-form{
+    flex-basis: 100%;
+    padding: 10px;
+}
+
+.update-form h1{
+    width: 100%;
+    color: white;
+    padding: 25px;
+    font-weight: 500;
+}
+
+.update-form .label{
+    display: block;
+    margin: 5px 0;
+}
+.update-form .form-group{
+    padding: 10px;
+}
+.update-form .form-group .input{
+    width:100%;
+    padding: 10px;
+}

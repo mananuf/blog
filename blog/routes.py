@@ -1,5 +1,5 @@
 from flask import render_template,url_for,redirect, flash,request
-from blog.forms import RegistrationForm, LoginForm
+from blog.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from blog import app, bcrypt, db
 from blog.models import User, Post
 from flask_login import login_user, current_user, logout_user,login_required
@@ -93,4 +93,5 @@ def logout():
 @app.route('/account')
 @login_required #only allow to render, if a user is logged in
 def account():
-    return render_template('account.html', title='Account')
+    form = UpdateAccountForm()
+    return render_template('account.html', title='Account', form=form)
