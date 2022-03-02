@@ -1,3 +1,4 @@
+/* ***************** main profile container********************** */
 .profile-container{
     display: flex;
     margin: 20px auto;
@@ -7,14 +8,27 @@
     border-radius: 5px;
     width: 80%;
 }
-
+/* **************** photo container ********************* */
 .profile-photo img{
     border-radius: 50%;
     width: 150px;
     height: 150px;
 }
+
+/* ***************** profile details container ****************** */
 .profile-container .profile-details{
     flex: 1;
     padding: 20px;
+}
+/* ***************** profile details h3 ****************** */
+.profile-container .profile-details h3{
+    font-size: 30px;
+    font-weight: 500;
+}
+/* ***************** profile details horizontal-rule ****************** */
+.profile-container .profile-details hr{
+    color: rgba(175, 175, 185, 0.541);
+    width: 80%;
+    margin: 5px 0;
 }
 

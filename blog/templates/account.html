@@ -4,10 +4,11 @@
 <div class="container">
     <div class="profile-container">
         <div class="profile-photo">
-            <img src="{{url_for('static', filename='img/default.png')}}" alt="">
+            <img src="{{url_for('static', filename='img/default.png')}}" alt="Profile Picture">
         </div>
         <div class="profile-details">
             <h3> {{current_user.username}} </h3>  <!--displays username of current user-->
+            <hr>
             <p> {{current_user.email}} </p> <!--displays email of curent user-->
         </div>
     </div>
