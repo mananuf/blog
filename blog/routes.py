@@ -2,6 +2,7 @@ from flask import render_template,url_for,redirect, flash
 from blog.forms import RegistrationForm, LoginForm
 from blog import app, bcrypt, db
 from blog.models import User, Post
+from flask_login import login_user, current_user
 
 posts = [ #an array/list of dictionaries, containing blog post
     {
@@ -36,7 +37,13 @@ def about():
 
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
+    # check for currently loged in account 
+    if current_user.is_authenticated: #if the user is already logged in
+        return redirect(url_for('home')) #remain in the home page
+
+
     form = RegistrationForm()
+
 
     if form.validate_on_submit(): #if the form validates correctly,
 
@@ -55,10 +62,21 @@ def registration():
 
 @app.route('/login', methods=['Get','POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash(f'Logged in successfully. Welcome onboard {form.email.data}', 'success')
 
-        return redirect(url_for('home'))
+    # check for currently loged in account 
+    if current_user.is_authenticated: #if the user is already logged in
+        return redirect(url_for('home')) #remain in the home page
+
+
+    form = LoginForm()
+    
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first() #check for email in DB
+        if user and bcrypt.check_password_hash(user.password, form.password.data): #if it exists and password matches
+            login_user(user, remember=form.remember.data) #log user in and remeber choice
+
+            return redirect(url_for('home'))
+        else: #if credentials do not match
+            flash(f'Login unsuccessful. check {form.email.data} and password.', 'danger') #flash this
 
     return render_template('login.html', title='Login', form=form)
