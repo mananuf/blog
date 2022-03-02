@@ -23,6 +23,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #setting relative p
 db = SQLAlchemy(app) #creating an instance for DB
 bcrypt = Bcrypt(app) # instantiating Bcrypt
 login_manager = LoginManager(app) #instantiating LoginManager
-login_manager.login_view = 'login' #passing login view
-
+login_manager.login_view = 'login' #passing login view when account page is required but not authenticated yet
+login_manager.login_message_category = 'info'
 from blog import routes #imports route channel
