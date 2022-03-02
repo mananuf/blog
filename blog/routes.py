@@ -1,4 +1,4 @@
-from flask import render_template,url_for,redirect, flash
+from flask import render_template,url_for,redirect, flash,request
 from blog.forms import RegistrationForm, LoginForm
 from blog import app, bcrypt, db
 from blog.models import User, Post
@@ -74,8 +74,9 @@ def login():
         user = User.query.filter_by(email=form.email.data).first() #check for email in DB
         if user and bcrypt.check_password_hash(user.password, form.password.data): #if it exists and password matches
             login_user(user, remember=form.remember.data) #log user in and remeber choice
+            next_page = request.args.get('next') #get next page
 
-            return redirect(url_for('home'))
+            return redirect(url_for('account')) if next_page else redirect(url_for('home')) #return next_page if it exists. else return home
         else: #if credentials do not match
             flash(f'Login unsuccessful. check {form.email.data} and password.', 'danger') #flash this
 
