@@ -7,3 +7,14 @@
     border-radius: 5px;
     width: 80%;
 }
+
+.profile-photo img{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+.profile-container .profile-details{
+    flex: 1;
+    padding: 20px;
+}
+
