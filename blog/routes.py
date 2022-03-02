@@ -2,7 +2,7 @@ from flask import render_template,url_for,redirect, flash
 from blog.forms import RegistrationForm, LoginForm
 from blog import app, bcrypt, db
 from blog.models import User, Post
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 
 posts = [ #an array/list of dictionaries, containing blog post
     {
@@ -69,7 +69,7 @@ def login():
 
 
     form = LoginForm()
-    
+
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first() #check for email in DB
         if user and bcrypt.check_password_hash(user.password, form.password.data): #if it exists and password matches
